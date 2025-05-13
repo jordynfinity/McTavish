@@ -1,0 +1,32 @@
+{
+  "name": "mctavish",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "simulate": "ts-node src/simulation.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "assistant",
+    "nonlinear",
+    "directed-graph",
+    "asynchronous",
+    "character-aware"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "McTavish: A nonlinear assistant ecosystem with character-aware collapse surfaces, directed graph memory, and asynchronous tension binding",
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/graphlib": "^2.1.12",
+    "@types/uuid": "^10.0.0",
+    "graphlib": "^2.1.8",
+    "uuid": "^11.1.0"
+  }
+}
