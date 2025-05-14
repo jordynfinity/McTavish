@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 
 interface UiState {
   activeTab: 'graph' | 'timeline' | 'messages';
@@ -31,7 +31,7 @@ export const uiSlice = createSlice({
       state.showPremonitions = !state.showPremonitions;
     }
   },
-});
+}) as Slice<UiState>;
 
 export const { setActiveTab, toggleSidebar, setZoomLevel, togglePremonitions } = uiSlice.actions;
 

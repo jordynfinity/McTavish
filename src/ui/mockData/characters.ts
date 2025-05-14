@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const mockCharacters: CharacterField[] = [
   {
-    id: uuidv4(),
+    id: "character-assistant-a",
     name: 'Assistant A',
     toneProfile: {
       baseline: 'neutral',
@@ -22,11 +22,11 @@ export const mockCharacters: CharacterField[] = [
       },
       stabilityFactors: ['core_memory']
     },
-    memoryAnchor: uuidv4(),
+    memoryAnchor: "memory-assistant-a",
     collapseThreshold: 0.6
   },
   {
-    id: uuidv4(),
+    id: "character-elena",
     name: 'Elena',
     toneProfile: {
       baseline: 'neutral',
@@ -49,11 +49,11 @@ export const mockCharacters: CharacterField[] = [
       },
       stabilityFactors: ['core_memory', 'repeated_interaction']
     },
-    memoryAnchor: uuidv4(),
+    memoryAnchor: "memory-elena",
     collapseThreshold: 0.7
   },
   {
-    id: uuidv4(),
+    id: "character-elena-variant",
     name: 'Elena (variant)',
     toneProfile: {
       baseline: 'anger',
@@ -76,24 +76,24 @@ export const mockCharacters: CharacterField[] = [
       },
       stabilityFactors: ['core_memory']
     },
-    memoryAnchor: uuidv4(),
+    memoryAnchor: "memory-elena-variant",
     collapseThreshold: 0.5
   }
 ];
 
 export const mockEmotionalStates: Record<string, EmotionalState> = {
-  [mockCharacters[0].id]: {
+  "character-assistant-a": {
     dominant: 'curiosity',
     intensity: 0.8,
     stability: 0.4
   },
-  [mockCharacters[1].id]: {
+  "character-elena": {
     dominant: 'sadness',
     secondary: 'exhaustion',
     intensity: 0.7,
     stability: 0.8
   },
-  [mockCharacters[2].id]: {
+  "character-elena-variant": {
     dominant: 'anger',
     secondary: 'disgust',
     intensity: 0.8,

@@ -64,8 +64,10 @@ export const CanonGraph: React.FC = () => {
   
   const initialNodes = useMemo(() => {
     const baseNodes = layoutNodes(mockFlowNodes);
+    const ghostNodes = layoutNodes(mockGhostNodes);
+    
     return showPremonitions 
-      ? [...baseNodes, ...layoutNodes(mockGhostNodes)]
+      ? [...baseNodes, ...ghostNodes]
       : baseNodes;
   }, [showPremonitions]);
   

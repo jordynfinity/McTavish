@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { Premonition } from '../../types';
 import { mockPremonitions } from '../mockData/premonitions';
 
@@ -22,13 +22,13 @@ export const premonitionSlice = createSlice({
     setActivePremonition: (state, action: PayloadAction<string>) => {
       state.activePremonitionId = action.payload;
     },
-    clearActivePremonition: (state) => {
+    clearActivePremonition: (state, action: PayloadAction<void>) => {
       state.activePremonitionId = null;
     },
     bindPremonition: (state, action: PayloadAction<{ premonitionId: string, inputId: string }>) => {
     }
   },
-});
+}) as Slice<PremonitionState>;
 
 export const { 
   emitPremonition, 

@@ -2,13 +2,13 @@ import { MemoryNode, MemoryEdge, FractureEvent, RecursionFold } from '../../type
 import { v4 as uuidv4 } from 'uuid';
 import { mockCharacters } from './characters';
 
-const fracture1Id = uuidv4();
-const fracture2Id = uuidv4();
-const fold1Id = uuidv4();
-const fold2Id = uuidv4();
-const fold3Id = uuidv4();
-const memory1Id = uuidv4();
-const memory2Id = uuidv4();
+const fracture1Id = "fracture-1";
+const fracture2Id = "fracture-2";
+const fold1Id = "fold-1";
+const fold2Id = "fold-2";
+const fold3Id = "fold-3";
+const memory1Id = "memory-elena";
+const memory2Id = "memory-elena-variant";
 
 export const mockFractures: FractureEvent[] = [
   {

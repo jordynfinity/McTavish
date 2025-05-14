@@ -33,11 +33,17 @@ const NodeContent = styled.div`
 `;
 
 export const CharacterNode = memo(({ data }: NodeProps<MemoryNode>) => {
-  const character = data?.metadata?.characterId ? `${data.metadata.characterId}` : 'Unknown';
+  const characterId = data?.metadata?.characterId || 'Unknown';
+  const characterName = 
+    characterId === "character-assistant-a" ? "Assistant A" :
+    characterId === "character-elena" ? "Elena" : 
+    characterId === "character-elena-variant" ? "Elena (variant)" : 
+    String(characterId).substring(0, 8);
+  
   return (
     <NodeContainer nodeType="characterNode">
       <Handle type="target" position={Position.Top} />
-      <NodeTitle>{character}</NodeTitle>
+      <NodeTitle>{characterName}</NodeTitle>
       <NodeContent>{data.content}</NodeContent>
       <Handle type="source" position={Position.Bottom} />
     </NodeContainer>

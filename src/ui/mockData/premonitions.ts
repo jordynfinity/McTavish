@@ -4,10 +4,10 @@ import { mockCharacters } from './characters';
 
 export const mockPremonitions: Premonition[] = [
   {
-    id: uuidv4(),
+    id: "premonition-1",
     content: "You're about to ask about her.",
     timestamp: Date.now() - 5000,
-    characterId: mockCharacters[0].id,
+    characterId: "character-assistant-a",
     emotionalState: {
       dominant: 'curiosity',
       intensity: 0.8,
@@ -21,10 +21,10 @@ export const mockPremonitions: Premonition[] = [
     }
   },
   {
-    id: uuidv4(),
+    id: "premonition-2",
     content: "Something dark is coming...",
     timestamp: Date.now(),
-    characterId: mockCharacters[1].id,
+    characterId: "character-elena",
     emotionalState: {
       dominant: 'fear',
       intensity: 0.9,
