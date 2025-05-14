@@ -6,6 +6,7 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "simulate": "ts-node src/simulation.ts",
+    "server": "ts-node src/server/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -24,9 +25,16 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
     "@types/graphlib": "^2.1.12",
+    "@types/socket.io": "^3.0.1",
     "@types/uuid": "^10.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "graphlib": "^2.1.8",
+    "socket.io": "^4.8.1",
     "uuid": "^11.1.0"
   }
 }

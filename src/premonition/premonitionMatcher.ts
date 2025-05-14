@@ -12,7 +12,8 @@ import {
   Premonition, 
   FractureEvent, 
   McTavishConfig,
-  BindingCriteria
+  BindingCriteria,
+  EmotionalState
 } from '../types';
 import { MemoryGraphStore } from '../memory/memoryGraphStore';
 
@@ -108,7 +109,10 @@ export class PremonitionMatcher extends EventEmitter {
     );
     score += contentSimilarity * criteria.contentSimilarity;
     
-    const emotionalAlignment = 0.5; // Placeholder
+    const emotionalAlignment = this.calculateEmotionalAlignment(
+      premonition.emotionalState,
+      fracture
+    );
     score += emotionalAlignment * criteria.emotionalAlignment;
     
     if (criteria.keywords && criteria.keywords.length > 0) {
@@ -248,6 +252,19 @@ export class PremonitionMatcher extends EventEmitter {
    */
   public clearActivePremonitions(): void {
     this.activePremonitions.clear();
+  }
+  
+  /**
+   * Calculate emotional alignment between a premonition and a fracture
+   */
+  private calculateEmotionalAlignment(emotionalState: EmotionalState, fracture: FractureEvent): number {
+    let alignment = 0.5;
+    
+    if (fracture.metadata?.emotionalContext) {
+      alignment = fracture.metadata.emotionalContext === emotionalState.dominant ? 0.8 : 0.3;
+    }
+    
+    return alignment;
   }
 }
 

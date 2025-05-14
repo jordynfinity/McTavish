@@ -171,9 +171,7 @@ export class CharacterKernel {
       toneProfile.baseline = fold.emotionalState.dominant;
     }
     
-    for (const [trait, weight] of Object.entries(driftDirections)) {
-      console.log(`Character ${character.name} drifting ${trait} by ${driftRate * weight * fold.emotionalState.intensity}`);
-    }
+    // Apply drift to character traits based on emotional state
     
     character.toneProfile = toneProfile;
     

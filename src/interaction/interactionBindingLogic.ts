@@ -73,7 +73,7 @@ export class InteractionBindingLogic extends EventEmitter {
   /**
    * Process a bound interaction (premonition -> fracture)
    */
-  public processBoundInteraction(binding: any): void {
+  public processBoundInteraction(binding: PremonitionBinding): void {
     const premonitionNode = this.memoryGraph.getNode(binding.premonitionId);
     const fractureNode = this.memoryGraph.getNode(binding.fractureId);
     
@@ -203,7 +203,7 @@ export class InteractionBindingLogic extends EventEmitter {
   /**
    * Handle a premonition binding event
    */
-  private handlePremonitionBinding(binding: any): void {
+  private handlePremonitionBinding(binding: PremonitionBinding): void {
     this.processBoundInteraction(binding);
   }
 
@@ -354,4 +354,14 @@ interface BindingState {
   selectedFoldId: string | null;
   timestamp: number;
   status: 'pending' | 'resolved';
+}
+
+/**
+ * Premonition binding interface
+ */
+interface PremonitionBinding {
+  premonitionId: string;
+  fractureId: string;
+  timestamp: number;
+  matchScore: number;
 }
