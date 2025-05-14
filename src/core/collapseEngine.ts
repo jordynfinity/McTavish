@@ -65,7 +65,7 @@ export class CollapseEngine extends EventEmitter {
         this.generateRecursionFold(character, fracture);
       }
       
-      if (Math.random() < this.getPremontionProbability(character)) {
+      if (Math.random() < this.getPremonitionProbability(character)) {
         this.generatePremonition(character);
       }
     });
@@ -146,7 +146,7 @@ export class CollapseEngine extends EventEmitter {
   /**
    * Get the probability of generating a premonition for a character
    */
-  private getPremontionProbability(character: any): number {
+  private getPremonitionProbability(character: any): number {
     return 0.2; // 20% chance by default
   }
 

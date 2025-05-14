@@ -68,8 +68,8 @@ class McTavishSimulation {
     
     this.mctavish = new McTavish(config);
     
-    this.memoryGraph = (this.mctavish as any).memoryGraph;
-    this.characterKernel = (this.mctavish as any).characterKernel;
+    this.memoryGraph = this.mctavish.getMemoryGraph();
+    this.characterKernel = this.mctavish.getCharacterKernel();
     
     this.assistantId = this.createAssistantCharacter();
     this.elenaId = this.createElenaCharacter();
@@ -145,7 +145,7 @@ class McTavishSimulation {
    * Set up event listeners for the simulation
    */
   private setupEventListeners(): void {
-    (this.mctavish as any).collapseEngine.on('recursionFold', (fold: RecursionFold) => {
+    this.mctavish.getCollapseEngine().on('recursionFold', (fold: RecursionFold) => {
       const character = this.characterKernel.getCharacter(fold.characterId);
       if (!character) return;
       
@@ -160,7 +160,7 @@ class McTavishSimulation {
       }
     });
     
-    (this.mctavish as any).collapseEngine.on('premonition', (premonition: Premonition) => {
+    this.mctavish.getCollapseEngine().on('premonition', (premonition: Premonition) => {
       const character = this.characterKernel.getCharacter(premonition.characterId);
       if (!character) return;
       
@@ -173,11 +173,11 @@ class McTavishSimulation {
       }
     });
     
-    (this.mctavish as any).premonitionMatcher.on('binding', (binding: any) => {
+    this.mctavish.getPremonitionMatcher().on('binding', (binding: any) => {
       log(`Premonition bound to fracture: ${binding.premonitionId} -> ${binding.fractureId}`, 'event');
     });
     
-    (this.mctavish as any).interactionBinding.on('interaction', (interaction: any) => {
+    this.mctavish.getInteractionBinding().on('interaction', (interaction: any) => {
       log(`Interaction: ${interaction.type}`, 'event');
     });
   }
@@ -249,7 +249,7 @@ class McTavishSimulation {
     
     this.memoryGraph.addPremonition(premonition);
     
-    (this.mctavish as any).premonitionMatcher.addPremonition(premonition);
+    this.mctavish.getPremonitionMatcher().addPremonition(premonition);
     
     log(`Assistant A emitted premonition: "${premonition.content}"`, 'character');
     this.premonitionId = premonition.id;
@@ -291,14 +291,14 @@ class McTavishSimulation {
       return;
     }
     
-    (this.mctavish as any).premonitionMatcher.processFracture({
+    this.mctavish.getPremonitionMatcher().processFracture({
       id: this.fractureId,
       content: fracture.content,
       timestamp: fracture.timestamp,
       source: 'user'
     });
     
-    (this.mctavish as any).collapseEngine.bindPremonitionToFracture(
+    this.mctavish.getCollapseEngine().bindPremonitionToFracture(
       this.premonitionId,
       this.fractureId
     );
@@ -398,8 +398,8 @@ class McTavishSimulation {
     this.memoryGraph.addFold(tiredResponse);
     this.memoryGraph.addFold(cruelResponse);
     
-    (this.mctavish as any).interactionBinding.processFold(tiredResponse);
-    (this.mctavish as any).interactionBinding.processFold(cruelResponse);
+    this.mctavish.getInteractionBinding().processFold(tiredResponse);
+    this.mctavish.getInteractionBinding().processFold(cruelResponse);
     
     this.tiredResponseId = tiredResponse.id;
     this.cruelResponseId = cruelResponse.id;
@@ -482,7 +482,7 @@ class McTavishSimulation {
     
     this.memoryGraph.addFold(softGriefResponse);
     
-    (this.mctavish as any).interactionBinding.processFold(softGriefResponse);
+    this.mctavish.getInteractionBinding().processFold(softGriefResponse);
     
     log(`Elena responded with soft grief tone: "${softGriefResponse.content}"`, 'character');
     

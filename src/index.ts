@@ -91,6 +91,26 @@ export class McTavish {
   public selectResponse(foldId: string): void {
     this.interactionBinding.selectResponse(foldId);
   }
+
+  public getMemoryGraph(): MemoryGraphStore {
+    return this.memoryGraph;
+  }
+
+  public getCollapseEngine(): CollapseEngine {
+    return this.collapseEngine;
+  }
+
+  public getPremonitionMatcher(): PremonitionMatcher {
+    return this.premonitionMatcher;
+  }
+
+  public getInteractionBinding(): InteractionBindingLogic {
+    return this.interactionBinding;
+  }
+
+  public getCharacterKernel(): CharacterKernel {
+    return this.characterKernel;
+  }
 }
 
 export * from './core/collapseEngine';
