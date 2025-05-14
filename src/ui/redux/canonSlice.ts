@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { MemoryNode, MemoryEdge, FractureEvent, RecursionFold } from '../../types';
 import { mockMemoryNodes, mockMemoryEdges, mockFractures, mockFolds } from '../mockData/canon';
 
@@ -71,7 +71,7 @@ export const canonSlice = createSlice({
       }
     }
   },
-});
+}) as Slice<CanonState>;
 
 export const { selectNode, clearSelection, setActivePath, selectFork, addFracture, addFold } = canonSlice.actions;
 

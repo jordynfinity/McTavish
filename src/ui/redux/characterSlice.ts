@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { CharacterField, EmotionalState } from '../../types';
 import { mockCharacters, mockEmotionalStates } from '../mockData/characters';
 
@@ -21,14 +21,14 @@ export const characterSlice = createSlice({
     possessCharacter: (state, action: PayloadAction<string>) => {
       state.possessedCharacterId = action.payload;
     },
-    clearPossession: (state) => {
+    clearPossession: (state, action: PayloadAction<void>) => {
       state.possessedCharacterId = null;
     },
     updateEmotionalState: (state, action: PayloadAction<{ characterId: string, emotionalState: EmotionalState }>) => {
       state.emotionalStates[action.payload.characterId] = action.payload.emotionalState;
     }
   },
-});
+}) as Slice<CharacterState>;
 
 export const { possessCharacter, clearPossession, updateEmotionalState } = characterSlice.actions;
 

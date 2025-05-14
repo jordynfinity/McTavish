@@ -115,7 +115,7 @@ export const PremonitionOverlay: React.FC = () => {
   
   const handlePremonitionClick = useCallback((premonitionId: string) => {
     if (activePremonitionId === premonitionId) {
-      dispatch(clearActivePremonition());
+      dispatch(clearActivePremonition({}));
     } else {
       dispatch(setActivePremonition(premonitionId));
     }

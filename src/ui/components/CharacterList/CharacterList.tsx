@@ -92,7 +92,7 @@ export const CharacterList: React.FC = () => {
   
   const handleCharacterClick = useCallback((characterId: string) => {
     if (possessedCharacterId === characterId) {
-      dispatch(clearPossession());
+      dispatch(clearPossession({}));
     } else {
       dispatch(possessCharacter(characterId));
     }
